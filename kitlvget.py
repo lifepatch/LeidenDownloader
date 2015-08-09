@@ -12,7 +12,7 @@ from htmlentitydefs import name2codepoint
 from PIL import Image
 
 base_url   = "http://media-kitlv.nl"
-target_url = base_url + "/all-media/indeling/detail/form/advanced/start/51?q_searchfield=tigers"
+#target_url = base_url + "/all-media/indeling/detail/form/advanced/start/51?q_searchfield=tigers"
 target_xml = base_url + "/index.php?option=com_memorixbeeld&amp;view=record&amp;format=topviewxml&amp;tstart=0&amp;id="
 
 if not len(sys.argv) > 1:
@@ -100,16 +100,6 @@ def concatImageTile(_starttile, _cols, _rows,_w, _h, _dir):
 			images = []	
 	
 			result = Image.new("RGBA", (_w, _h))
-
-			#if not os.path.exists(dir):
-			#	raise SystemExit("dir not exisr")
-				
-			#for row in range(0, rows):
-			#	base =  starttile + (row*cols);
-			#	for col in range(0, cols):
-			#		row_col_tile_url =  _dir + "/" + str(base+col) + ".jpg";
-			#		#images.append(Image.open(row_col_tile_url))
-			#		#urllib.urlretrieve(row_col_tile_url,dir + "/" + str(base+col) + ".jpg")	
 			
 			y = 0
 			x = 0
@@ -131,7 +121,7 @@ def concatImageTile(_starttile, _cols, _rows,_w, _h, _dir):
 							
 			result.save(_dir + "/" + "result.jpg")
 
-print ":: download finished..."
+print ":: downloading.."
 downloadImageTileList(image_url_full, image_tile_starttile, image_tile_cols, image_tile_rows, xml_first_topview_id)
 print ":: merge image..."
 concatImageTile(image_tile_starttile, image_tile_cols, image_tile_rows,image_tile_width, image_tile_height, xml_first_topview_id)
